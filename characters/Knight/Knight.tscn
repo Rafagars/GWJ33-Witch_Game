@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://characters/Knight/assets/Knight_1.png" type="Texture" id=1]
 [ext_resource path="res://characters/Knight/assets/KnightWalk.png" type="Texture" id=2]
+[ext_resource path="res://characters/Knight/Knight.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -73,12 +74,16 @@ height = 15.3447
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 11.4677, 4.0437 )
 
-[node name="Knight" type="Area2D"]
+[node name="Knight" type="RigidBody2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 11 )
 animation = "Walk"
-frame = 4
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
