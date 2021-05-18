@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/KnightWalk.png-5c112a56aa54c59b1e772253959970fe.stex"
+path="res://.import/Archer_Walk_L.png-27c29b834cd81c9cdb237eacd9ea1784.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/Knight/assets/KnightWalk.png"
-dest_files=[ "res://.import/KnightWalk.png-5c112a56aa54c59b1e772253959970fe.stex" ]
+source_file="res://characters/Archer/assets/Archer_Walk_L.png"
+dest_files=[ "res://.import/Archer_Walk_L.png-27c29b834cd81c9cdb237eacd9ea1784.stex" ]
 
 [params]
 

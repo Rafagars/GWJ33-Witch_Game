@@ -1,3 +1,25 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://characters/Archer/Archer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://characters/Knight/Knight.tscn" type="PackedScene" id=3]
 
 [node name="Level1" type="Node2D"]
+
+[node name="Knight" parent="." instance=ExtResource( 3 )]
+position = Vector2( 55.9377, 64.0992 )
+
+[node name="Knight2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 386.41, 74.1899 )
+
+[node name="Archer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 209.147, 17.0089 )
+
+[node name="Archer2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 143.146, 18.1981 )
+
+[node name="Archer3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 291.389, 18.6907 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 206.922, 225.949 )
