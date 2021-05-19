@@ -1,17 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://fonts/Berry Rotunda.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/templates/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/Augusta.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/bg/Backg.png" type="Texture" id=4]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 65
 extra_spacing_space = -6
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 20
 extra_spacing_bottom = -6
 font_data = ExtResource( 1 )
@@ -24,10 +25,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 margin_right = 480.0
 margin_bottom = 272.0
-color = Color( 0.384314, 0.321569, 0.219608, 1 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -36,7 +37,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_top = 32.0
 margin_bottom = 181.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "GAME OVER
 "
@@ -63,8 +64,8 @@ __meta__ = {
 margin_top = 12.0
 margin_right = 193.0
 margin_bottom = 33.0
-custom_styles/focus = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Restart"
 path = "res://ui/LevelUI.tscn"
 
@@ -72,7 +73,7 @@ path = "res://ui/LevelUI.tscn"
 margin_top = 37.0
 margin_right = 193.0
 margin_bottom = 58.0
-custom_styles/focus = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Return to Title"
 path = "res://menus/MainMenu.tscn"

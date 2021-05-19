@@ -17,9 +17,11 @@ func _process(delta):
 	self.position += dir * delta * 150
 	if $RayCast2D.is_colliding():
 		var collider = $RayCast2D.get_collider()
-		if collider.is_in_group("PLAYER"):
+		if collider.is_in_group("PLAYER") and collider.hit == false:
 			position = Vector2(500, 500)
+			collider.hit = true
 			collider.health -= 1
+			collider.healthCooldownTimer.start(collider.healthCooldown)
 			get_node("/root/LevelUI").update_hearts(4, collider.health)
 
 

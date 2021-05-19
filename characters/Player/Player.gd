@@ -8,9 +8,9 @@ var velocity = Vector2.ZERO
 
 export var health = 4
 export var mana = 10
-export var fireDelay: float = 0.2
-onready var fireDelayTimer := $FireDelayTimer
-
+export var healthCooldown: int = 3 
+onready var healthCooldownTimer := $HeatlhCooldownTimer
+var hit = false
 var mouse_pos = Vector2.ZERO
 
 var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
@@ -62,9 +62,14 @@ func _physics_process(delta):
 	get_node("/root/LevelUI").update_currency(mana)
 	
 	if health < 1:
+		Globals.score = 0
 		return get_tree().change_scene("res://menus/GameOver.tscn")
 
 
 func _on_ManaTimer_timeout():
 	if mana < 10:
 		mana += 1
+
+
+func _on_HeatlhCooldownTimer_timeout():
+	hit = false

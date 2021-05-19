@@ -30,10 +30,12 @@ func _process(delta):
 			counter -= 1
 		queue_free()
 		
-	if not $Attack.disabled and $Attack/RayCast2D.is_colliding():
+	if $Attack/RayCast2D.is_colliding():
 		var collider = $Attack/RayCast2D.get_collider()
-		if collider.is_in_group("PLAYER"):
+		if collider.is_in_group("PLAYER") and collider.hit == false:
+			collider.hit = true
 			collider.health -= 1
+			collider.healthCooldownTimer.start(collider.healthCooldown)
 			get_node("/root/LevelUI").update_hearts(4, collider.health)
 
 
