@@ -16,6 +16,8 @@ func _process(delta):
 		if collider.is_in_group("Enemy"):
 			position += Vector2(500,500)
 			collider.health -= 1
+			Globals.score += 10
+			get_node("/root/LevelUI").update_score(Globals.score)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

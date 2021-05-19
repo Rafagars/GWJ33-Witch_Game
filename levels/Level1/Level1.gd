@@ -27,6 +27,7 @@ func spawn_enemies():
 		add_child(knight)
 	else: 
 		archer.position = Vector2(pos)
+		archer.spawn_point = Vector2(pos)
 		add_child(archer)
 	
 	Globals.i += 1

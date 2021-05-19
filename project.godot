@@ -17,6 +17,10 @@ run/main_scene="res://menus/MainMenu.tscn"
 
 Globals="*res://Globals.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=480

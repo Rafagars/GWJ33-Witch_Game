@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://characters/Archer/assets/Archer.png" type="Texture" id=1]
 [ext_resource path="res://characters/Archer/Archer.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://characters/Archer/assets/Archer_Draw.png" type="Texture" id=4]
 [ext_resource path="res://characters/Archer/assets/Archer_Walk_L.png" type="Texture" id=5]
 [ext_resource path="res://characters/Archer/assets/Archer_Walk_R.png" type="Texture" id=6]
+[ext_resource path="res://characters/Archer/assets/Bearded_Foxdeer_Walk.png" type="Texture" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -163,7 +164,7 @@ region = Rect2( 0, 64, 32, 32 )
 atlas = ExtResource( 1 )
 region = Rect2( 32, 64, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=40]
+[sub_resource type="SpriteFrames" id=43]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
@@ -191,9 +192,29 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=41]
+[sub_resource type="CapsuleShape2D" id=44]
 radius = 7.5
 height = 12.0
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 7 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=48]
+animations = [ {
+"frames": [ SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "Fox",
+"speed": 5.0
+} ]
 
 [node name="Archer" type="Area2D" groups=[
 "Enemy",
@@ -204,20 +225,25 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 40 )
+frames = SubResource( 43 )
 animation = "Walk"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1.5 )
-shape = SubResource( 41 )
+shape = SubResource( 44 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
 [node name="Move_tween" type="Tween" parent="."]
 
 [node name="Shoot" type="Timer" parent="."]
+
+[node name="Animal" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 48 )
+animation = "Fox"
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Shoot" to="." method="_on_Shoot_timeout"]

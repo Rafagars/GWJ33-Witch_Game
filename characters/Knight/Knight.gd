@@ -3,6 +3,8 @@ extends Area2D
 var dir = Vector2.ZERO
 onready var player = get_parent().get_node("Player")
 export var health = 2
+var mana_scene = preload("res://obj/ManaOrb/ManaOrb.tscn")
+var counter = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,14 +23,18 @@ func _process(delta):
 		$Attack.disabled = true
 	if health < 1:
 		Globals.i -= 1
-		Globals.score += 20
-		get_node("/root/LevelUI").update_score(Globals.score)
+		if counter > 0:
+			var mana = mana_scene.instance()
+			mana.position = self.position
+			get_parent().add_child(mana)
+			counter -= 1
 		queue_free()
-		if $Attack/RayCast2D.is_colliding():
-			var collider = $RayCast2D.get_collider()
-			if collider.is_in_group("PLAYER"):
-				collider.health -= 1
-				get_node("/root/LevelUI").update_hearts(4, collider.health)
+		
+	if not $Attack.disabled and $Attack/RayCast2D.is_colliding():
+		var collider = $Attack/RayCast2D.get_collider()
+		if collider.is_in_group("PLAYER"):
+			collider.health -= 1
+			get_node("/root/LevelUI").update_hearts(4, collider.health)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

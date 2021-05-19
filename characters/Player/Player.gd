@@ -17,6 +17,7 @@ var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	$ManaTimer.set_wait_time(2)
 	$ManaTimer.start()
 
 func _input(event):
@@ -57,6 +58,8 @@ func _physics_process(delta):
 		
 	velocity = move_and_slide(velocity)
 	$Pointer.look_at(get_global_mouse_position())
+	
+	get_node("/root/LevelUI").update_currency(mana)
 	
 	if health < 1:
 		return get_tree().change_scene("res://menus/GameOver.tscn")
