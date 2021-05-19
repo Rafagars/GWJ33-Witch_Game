@@ -15,6 +15,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	self.position += dir * delta * 150
+	if $RayCast2D.is_colliding():
+		var collider = $RayCast2D.get_collider()
+		if collider.is_in_group("PLAYER"):
+			position = Vector2(500, 500)
+			collider.health -= 1
+			get_node("/root/LevelUI").update_hearts(4, collider.health)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

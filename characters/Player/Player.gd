@@ -16,7 +16,7 @@ var mouse_pos = Vector2.ZERO
 var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$ManaTimer.start()
 
 func _input(event):
@@ -33,6 +33,8 @@ func _physics_process(delta):
 			beam.dir = Vector2(mouse_pos.x - self.position.x, mouse_pos.y - self.position.y).normalized()
 			mana -= 1
 			get_parent().add_child(beam)
+	if Input.is_action_just_pressed("ui_accept"):
+		return get_tree().change_scene("res://menus/PauseMenu.tscn")
 		
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -55,6 +57,9 @@ func _physics_process(delta):
 		
 	velocity = move_and_slide(velocity)
 	$Pointer.look_at(get_global_mouse_position())
+	
+	if health < 1:
+		return get_tree().change_scene("res://menus/GameOver.tscn")
 
 
 func _on_ManaTimer_timeout():

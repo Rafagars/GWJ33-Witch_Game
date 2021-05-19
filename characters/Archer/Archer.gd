@@ -22,6 +22,8 @@ func _process(delta):
 	
 	if health < 1:
 		Globals.i -= 1
+		Globals.score += 10
+		get_node("/root/LevelUI").update_score(Globals.score)
 		queue_free()
 	
 func spawn_arrows():

@@ -48,7 +48,7 @@ __meta__ = {
 margin_right = 480.0
 margin_bottom = 21.0
 text = "Play"
-path = "res://levels/Level1/Level1.tscn"
+path = "res://ui/LevelUI.tscn"
 
 [node name="Credits" parent="Buttons" instance=ExtResource( 2 )]
 margin_top = 30.0

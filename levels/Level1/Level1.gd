@@ -9,8 +9,9 @@ func _ready():
 	$WaveTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		return get_tree().change_scene("res://menus/PauseMenu.tscn")
 
 func spawn_enemies():
 	var archer = archer_scene.instance()

@@ -50,4 +50,20 @@ tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 
 
 [node name="WaveTimer" type="Timer" parent="."]
 
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Wall1" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 0, -32, 0, -32, 288, 0, 288 )
+
+[node name="Wall2" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 512, 0 )
+polygon = PoolVector2Array( 0, 0, -32, 0, -32, 288, 0, 288 )
+
+[node name="Wall3" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 256, 0, 288, 480, 288, 480, 256 )
+
+[node name="Wall4" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2( 0, -256 )
+polygon = PoolVector2Array( 0, 256, 0, 288, 480, 288, 480, 256 )
+
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]
