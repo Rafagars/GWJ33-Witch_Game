@@ -5,9 +5,9 @@ var arrow_scene = preload("res://characters/Archer/arrow/Arrow.tscn")
 var mana_scene = preload("res://obj/ManaOrb/ManaOrb.tscn")
 onready var player = get_parent().get_node("Player")
 export var health = 1
-var turned = false
-var spawn_point = Vector2.ZERO
-var counter = 1
+var turned = false #If turned into animal or not
+var spawn_point = Vector2.ZERO #Point from where the enemy spawn
+var counter = 1 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +16,7 @@ func _ready():
 	$AnimatedSprite.play("Draw")
 	$Shoot.set_wait_time(2)
 	$Shoot.start()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if turned == false:
 		dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
@@ -35,6 +35,7 @@ func _process(delta):
 			$Animal.flip_h = true
 		$Animal.play("Fox")
 		if counter > 0:
+			#To avoid "infinites" orb spawning
 			var mana = mana_scene.instance()
 			mana.position = self.position
 			get_parent().add_child(mana)
@@ -56,6 +57,6 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 
 func _on_Shoot_timeout():
-	if health > 0:
+	if health > 0: #This avoid the enemy for keep firing after defeated
 		$AnimatedSprite.play("Fire")
 		spawn_arrows()

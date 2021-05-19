@@ -11,6 +11,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
+		#Pause Menu
 		return get_tree().change_scene("res://menus/PauseMenu.tscn")
 
 func spawn_enemies():

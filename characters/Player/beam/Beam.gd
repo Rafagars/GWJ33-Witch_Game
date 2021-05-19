@@ -14,7 +14,7 @@ func _process(delta):
 	if $RayCast2D.is_colliding():
 		var collider = $RayCast2D.get_collider()
 		if collider.is_in_group("Enemy"):
-			position += Vector2(500,500)
+			position += Vector2(500,500) #So the signal for screen exited queued free
 			collider.health -= 1
 			Globals.score += 10
 			get_node("/root/LevelUI").update_score(Globals.score)

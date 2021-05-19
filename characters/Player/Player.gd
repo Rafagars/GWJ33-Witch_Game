@@ -8,13 +8,15 @@ var velocity = Vector2.ZERO
 
 export var health = 4
 export var mana = 10
+# To avoid that the player gets hit more that once in less that a second
 export var healthCooldown: int = 3 
 onready var healthCooldownTimer := $HeatlhCooldownTimer
 var hit = false
+# Stores the click position
 var mouse_pos = Vector2.ZERO
 
 var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	$ManaTimer.set_wait_time(2)
@@ -34,6 +36,7 @@ func _physics_process(delta):
 			beam.dir = Vector2(mouse_pos.x - self.position.x, mouse_pos.y - self.position.y).normalized()
 			mana -= 1
 			get_parent().add_child(beam)
+			
 	if Input.is_action_just_pressed("ui_accept"):
 		return get_tree().change_scene("res://menus/PauseMenu.tscn")
 		
@@ -54,6 +57,7 @@ func _physics_process(delta):
 	if input_vector != Vector2.ZERO:
 		velocity = velocity.move_toward(input_vector.normalized() * MAX_SPEED, ACCELERATION * delta)
 	else:
+		#Stop movement
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
 	velocity = move_and_slide(velocity)
@@ -67,9 +71,11 @@ func _physics_process(delta):
 
 
 func _on_ManaTimer_timeout():
+	#Restore mana if mana isn't full
 	if mana < 10:
 		mana += 1
 
 
 func _on_HeatlhCooldownTimer_timeout():
+	#Makes the player vunerable again
 	hit = false

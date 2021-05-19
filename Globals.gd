@@ -1,5 +1,6 @@
 extends Node
 
+#Global variables
 const MAX_ENEMIES = 8
 var i = 0
 var score = 0
