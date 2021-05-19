@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Archer_Draw.png-9e7d8e2c1c5b77d8707f10d0642b8a0c.stex"
+path="res://.import/Pointer.png-70a271cbf6c74e41afcbc84c8e930022.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/Archer/assets/Archer_Draw.png"
-dest_files=[ "res://.import/Archer_Draw.png-9e7d8e2c1c5b77d8707f10d0642b8a0c.stex" ]
+source_file="res://characters/Player/assets/Pointer.png"
+dest_files=[ "res://.import/Pointer.png-70a271cbf6c74e41afcbc84c8e930022.stex" ]
 
 [params]
 

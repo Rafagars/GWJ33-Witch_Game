@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Archer_Draw.png-9e7d8e2c1c5b77d8707f10d0642b8a0c.stex"
+path="res://.import/Forest_LIning.png-72a3d523e3877fe70fe86c175550ccfc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/Archer/assets/Archer_Draw.png"
-dest_files=[ "res://.import/Archer_Draw.png-9e7d8e2c1c5b77d8707f10d0642b8a0c.stex" ]
+source_file="res://tiles/Forest_LIning.png"
+dest_files=[ "res://.import/Forest_LIning.png-72a3d523e3877fe70fe86c175550ccfc.stex" ]
 
 [params]
 

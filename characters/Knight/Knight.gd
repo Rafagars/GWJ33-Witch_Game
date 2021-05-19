@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 
 var dir = Vector2.ZERO
 onready var player = get_parent().get_node("Player")
@@ -13,13 +13,17 @@ func _ready():
 func _process(delta):
 	dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
 	self.position += dir * delta * 60
-	if (player.position.x - self.position.x < 20) or (player.position.y - self.position.y < 20):
+	if Vector2(player.position.x - self.position.x, player.position.y - self.position.y).length() < 20:
 		$AnimatedSprite.play("Attack")
 		$Attack.disabled = false
 	else:
 		$AnimatedSprite.play("Walk")
 		$Attack.disabled = true
+	if health < 1:
+		Globals.i -= 1
+		queue_free()
 
 
 func _on_VisibilityNotifier2D_screen_exited():
+	Globals.i -= 1
 	queue_free()

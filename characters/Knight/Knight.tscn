@@ -64,9 +64,9 @@ height = 15.3447
 [sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 11.4677, 4.0437 )
 
-[node name="Knight" type="RigidBody2D"]
-mode = 2
-gravity_scale = 0.0
+[node name="Knight" type="Area2D" groups=[
+"Enemy",
+]]
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
