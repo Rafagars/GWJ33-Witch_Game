@@ -15,6 +15,7 @@ func _process(delta):
 		if collider.is_in_group("PLAYER") and collider.hit == false:
 			position = Vector2(500, 500) #So the signal for screen exited queued free
 			collider.hit = true
+			collider.hurt.play()
 			collider.health -= 1
 			collider.healthCooldownTimer.start(collider.healthCooldown)
 			get_node("/root/LevelUI").update_hearts(4, collider.health)

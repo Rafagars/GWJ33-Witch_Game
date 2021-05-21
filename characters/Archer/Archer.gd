@@ -6,6 +6,7 @@ var mana_scene = preload("res://obj/ManaOrb/ManaOrb.tscn")
 var heart_scene = preload("res://obj/Heart/Heart.tscn")
 onready var player = get_parent().get_node("Player")
 export var health = 1
+onready var hurt = $Hurt
 var turned = false #If turned into animal or not
 var spawn_point = Vector2.ZERO #Point from where the enemy spawn
 var counter = 1
@@ -14,6 +15,7 @@ var counter = 1
 func _ready():
 	var target = Vector2(self.position.x, self.position.y)
 	$Move_tween.interpolate_property(self, "position", position, target, 4, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	$Draw.play()
 	$AnimatedSprite.play("Draw")
 	$Shoot.set_wait_time(3)
 	$Shoot.start()
@@ -35,6 +37,7 @@ func _process(delta):
 			$Animal.flip_h = true
 		$Animal.play("Fox")
 		if counter > 0:
+			$Fox.play()
 			Globals.number_of_archers -= 1
 			if get_node("/root/LevelUI/Level1").random_fifty_fifty() == 0:
 				#To avoid "infinites" orb spawning
@@ -65,4 +68,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Shoot_timeout():
 	if health > 0: #This avoid the enemy for keep firing after defeated
 		$AnimatedSprite.play("Fire")
+		$Fire.play()
 		spawn_arrows()

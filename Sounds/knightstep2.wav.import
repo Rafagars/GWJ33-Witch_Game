@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/knightstep2.wav-b75d8ad74d47230e6c648ca2254e2ede.sample"
+
+[deps]
+
+source_file="res://Sounds/knightstep2.wav"
+dest_files=[ "res://.import/knightstep2.wav-b75d8ad74d47230e6c648ca2254e2ede.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

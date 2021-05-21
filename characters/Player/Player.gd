@@ -11,6 +11,7 @@ export var mana = 10
 # To avoid that the player gets hit more that once in less that a second
 export var healthCooldown: int = 3 
 onready var healthCooldownTimer := $HeatlhCooldownTimer
+onready var hurt = $Hurt
 var hit = false
 # Stores the click position
 var mouse_pos = Vector2.ZERO
@@ -33,6 +34,7 @@ func _physics_process(delta):
 		if mana > 0:
 			var beam = beam_scene.instance()
 			beam.position = self.position
+			$Spell.play()
 			beam.dir = Vector2(mouse_pos.x - self.position.x, mouse_pos.y - self.position.y).normalized()
 			mana -= 1
 			get_parent().add_child(beam)

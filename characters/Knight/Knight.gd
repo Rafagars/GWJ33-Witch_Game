@@ -5,6 +5,7 @@ onready var player = get_parent().get_node("Player")
 export var health = 2
 var heart_scene = preload("res://obj/Heart/Heart.tscn")
 var mana_scene = preload("res://obj/ManaOrb/ManaOrb.tscn")
+onready var hurt = $Hurt
 var turned = false #If turned into animal or not
 var spawn_point = Vector2.ZERO #Point from where the enemy spawn
 var counter = 1
@@ -38,6 +39,7 @@ func _process(delta):
 			$Animal.flip_h = true
 		$Animal.play()
 		if counter > 0:
+			$Fly.play()
 			if get_node("/root/LevelUI/Level1").random_fifty_fifty() == 0:
 				#To avoid "infinites" orb spawning
 				var mana = mana_scene.instance()
@@ -58,10 +60,8 @@ func _process(delta):
 			collider.healthCooldownTimer.start(collider.healthCooldown)
 			get_node("/root/LevelUI").update_hearts(4, collider.health)
 
-
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-
 
 func _on_Animal_animation_finished():
 	$Animal.play("Flying")

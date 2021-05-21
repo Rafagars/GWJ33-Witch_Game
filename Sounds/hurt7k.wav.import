@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hurt7k.wav-09d96530a408c5d9ff25be56245daf03.sample"
+
+[deps]
+
+source_file="res://Sounds/hurt7k.wav"
+dest_files=[ "res://.import/hurt7k.wav-09d96530a408c5d9ff25be56245daf03.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
