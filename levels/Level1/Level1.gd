@@ -3,8 +3,12 @@ extends Node2D
 var archer_scene = preload("res://characters/Archer/Archer.tscn")
 var knight_scene = preload("res://characters/Knight/Knight.tscn")
 var pos = Vector2.ZERO
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.number_of_archers = 0
+	Globals.number_of_knights = 0
 	$WaveTimer.set_wait_time(2)
 	$WaveTimer.start()
 
@@ -12,7 +16,8 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		#Pause Menu
-		return get_tree().change_scene("res://menus/PauseMenu.tscn")
+		get_parent().get_node("PauseMenu").set_visible(true)
+		get_tree().paused = true
 
 func spawn_enemies():
 	var archer = archer_scene.instance()
@@ -24,14 +29,17 @@ func spawn_enemies():
 	else:
 		pos = Vector2(500, random_generator.randi_range(50, 250))
 	if random_fifty_fifty():
-		knight.position = Vector2(pos)
-		add_child(knight)
-	else: 
-		archer.position = Vector2(pos)
-		archer.spawn_point = Vector2(pos)
-		add_child(archer)
-	
-	Globals.i += 1
+		if Globals.number_of_knights < Globals.MAX_KNIGHT:
+			knight.position = Vector2(pos)
+			knight.spawn_point = Vector2(pos)
+			add_child(knight)
+			Globals.number_of_knights += 1
+	else:
+		if Globals.number_of_archers < Globals.MAX_ARCHER: 
+			archer.position = Vector2(pos)
+			archer.spawn_point = Vector2(pos)
+			add_child(archer)
+			Globals.number_of_archers += 1
 
 func random_fifty_fifty():
 	var random_generator = RandomNumberGenerator.new()
@@ -39,5 +47,4 @@ func random_fifty_fifty():
 	return random_generator.randi_range(0, 1)
 
 func _on_WaveTimer_timeout():
-	if Globals.i < Globals.MAX_ENEMIES:
-		spawn_enemies()
+	spawn_enemies()

@@ -3,8 +3,12 @@ extends Area2D
 var dir = Vector2.ZERO
 onready var player = get_parent().get_node("Player")
 export var health = 2
+var heart_scene = preload("res://obj/Heart/Heart.tscn")
 var mana_scene = preload("res://obj/ManaOrb/ManaOrb.tscn")
+var turned = false #If turned into animal or not
+var spawn_point = Vector2.ZERO #Point from where the enemy spawn
 var counter = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,22 +17,38 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
-	self.position += dir * delta * 60
-	if Vector2(player.position.x - self.position.x, player.position.y - self.position.y).length() < 20:
-		$AnimatedSprite.play("Attack")
-		$Attack.disabled = false
+	if turned == false:
+		dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
+		self.position += dir * delta * 60
+		if Vector2(player.position.x - self.position.x, player.position.y - self.position.y).length() < 30:
+			$AnimatedSprite.play("Attack")
+			$Attack.disabled = false
+		else:
+			$AnimatedSprite.play("Walk")
+			$Attack.disabled = true
 	else:
-		$AnimatedSprite.play("Walk")
-		$Attack.disabled = true
+		dir = Vector2(spawn_point.x - self.position.x, spawn_point.y - self.position.y).normalized()
+		self.position += dir * delta * 60
 	if health < 1:
-		Globals.i -= 1
+		$AnimatedSprite.visible = false
+		turned = true
+		$Animal.visible = true
+		$CollisionShape2D.disabled = true
+		if spawn_point.x == -10 :
+			$Animal.flip_h = true
+		$Animal.play()
 		if counter > 0:
-			var mana = mana_scene.instance()
-			mana.position = self.position
-			get_parent().add_child(mana)
+			if get_node("/root/LevelUI/Level1").random_fifty_fifty() == 0:
+				#To avoid "infinites" orb spawning
+				var mana = mana_scene.instance()
+				mana.position = self.position
+				get_parent().add_child(mana)
+			else:
+				var heart = heart_scene.instance()
+				heart.position = self.position
+				get_parent().add_child(heart)
+			Globals.number_of_knights -= 1
 			counter -= 1
-		queue_free()
 		
 	if $Attack/RayCast2D.is_colliding():
 		var collider = $Attack/RayCast2D.get_collider()
@@ -40,5 +60,8 @@ func _process(delta):
 
 
 func _on_VisibilityNotifier2D_screen_exited():
-	Globals.i -= 1
 	queue_free()
+
+
+func _on_Animal_animation_finished():
+	$Animal.play("Flying")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/LevelUI.gd" type="Script" id=1]
 [ext_resource path="res://ui/sprites/heart.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://fonts/Berry Rotunda.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ui/sprites/Mana_Soul.png" type="Texture" id=5]
 [ext_resource path="res://levels/Level1/Level1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://menus/PauseMenu.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -22,6 +23,9 @@ __meta__ = {
 }
 heart = ExtResource( 2 )
 empty_heart = ExtResource( 3 )
+
+[node name="PauseMenu" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="HPCounter" type="HBoxContainer" parent="."]
 anchor_left = 1.0

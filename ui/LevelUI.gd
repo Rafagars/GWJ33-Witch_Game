@@ -11,25 +11,9 @@ onready var score = $Score
 onready var game : Node2D
 onready var player : KinematicBody2D
 
-var max_hp : int
-var hp : int
-
-
-# initialize() is so the UI gets the info it needs to display information. 
-# Please run before adding it as a child
-
-# initialize(game scene, player scene, max hp, hp)
-
-func initialize(_game, _player, _max_hp, _hp):
-	game = _game
-	player = _player
-	max_hp = _max_hp
-	hp = _hp
-
 
 func _ready() -> void:
 	draw_hearts(4)
-	yield(get_tree().create_timer(2), "timeout")
 
 
 # draw_hearts() is only for when the game starts. Use update_hearts() for mid-game stuff
@@ -40,10 +24,7 @@ func draw_hearts(_max_hp):
 		hp_counter.add_child(s)
 
 
-func update_hearts(_max_hp, _hp):
-	max_hp = _max_hp
-	hp = _hp
-	
+func update_hearts(max_hp, hp):
 	for i in hp_counter.get_children():
 		i.queue_free()
 	

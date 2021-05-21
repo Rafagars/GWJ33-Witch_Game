@@ -65,5 +65,4 @@ margin_right = 193.0
 margin_bottom = 71.0
 text = "Return to Title"
 path = "res://menus/MainMenu.tscn"
-
 [connection signal="pressed" from="Buttons/Resume" to="Buttons/Resume" method="_on_Resume_pressed"]

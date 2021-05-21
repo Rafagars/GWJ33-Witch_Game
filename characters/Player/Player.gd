@@ -19,7 +19,7 @@ var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
 
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$ManaTimer.set_wait_time(2)
+	$ManaTimer.set_wait_time(1.5)
 	$ManaTimer.start()
 
 func _input(event):
@@ -37,8 +37,6 @@ func _physics_process(delta):
 			mana -= 1
 			get_parent().add_child(beam)
 			
-	if Input.is_action_just_pressed("ui_accept"):
-		return get_tree().change_scene("res://menus/PauseMenu.tscn")
 		
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -74,7 +72,6 @@ func _on_ManaTimer_timeout():
 	#Restore mana if mana isn't full
 	if mana < 10:
 		mana += 1
-
 
 func _on_HeatlhCooldownTimer_timeout():
 	#Makes the player vunerable again

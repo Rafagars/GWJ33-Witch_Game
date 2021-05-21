@@ -2,7 +2,8 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Timer.set_wait_time(5)
+	$Timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,3 +15,14 @@ func _process(_delta):
 			if collider.mana < 10:
 				collider.mana += 1
 			get_node("/root/LevelUI").update_currency(collider.mana)
+			queue_free()
+
+
+func _on_Timer_timeout():
+	$Sprite.visible = false
+	$AnimatedSprite.visible = true
+	$AnimatedSprite.play()
+
+
+func _on_AnimatedSprite_animation_finished():
+	queue_free()
