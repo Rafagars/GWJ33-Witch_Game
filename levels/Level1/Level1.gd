@@ -2,6 +2,7 @@ extends Node2D
 
 var archer_scene = preload("res://characters/Archer/Archer.tscn")
 var knight_scene = preload("res://characters/Knight/Knight.tscn")
+var mage_scene = preload("res://characters/DarkMage/DarkMage.tscn")
 var pos = Vector2.ZERO
 
 
@@ -22,6 +23,7 @@ func _process(_delta):
 func spawn_enemies():
 	var archer = archer_scene.instance()
 	var knight = knight_scene.instance()
+	var mage = mage_scene.instance()
 	var random_generator = RandomNumberGenerator.new()
 	random_generator.randomize()
 	if random_fifty_fifty():
@@ -40,6 +42,11 @@ func spawn_enemies():
 			archer.spawn_point = Vector2(pos)
 			add_child(archer)
 			Globals.number_of_archers += 1
+	if Globals.score > 500 and Globals.number_of_mages < Globals.MAX_MAGES:
+		mage.position = Vector2(pos)
+		mage.spawn_point = Vector2(pos)
+		add_child(mage)
+		Globals.number_of_mages += 1
 
 func random_fifty_fifty():
 	var random_generator = RandomNumberGenerator.new()

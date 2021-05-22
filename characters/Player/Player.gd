@@ -73,7 +73,9 @@ func _physics_process(delta):
 func _on_ManaTimer_timeout():
 	#Restore mana if mana isn't full
 	if mana < 10:
-		mana += 1
+		mana += 2
+	if mana > 10:
+		mana = 10
 
 func _on_HeatlhCooldownTimer_timeout():
 	#Makes the player vunerable again
