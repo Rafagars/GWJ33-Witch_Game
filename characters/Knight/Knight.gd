@@ -22,6 +22,7 @@ func _process(delta):
 		dir = Vector2(player.position.x - self.position.x, player.position.y - self.position.y).normalized()
 		self.position += dir * delta * 60
 		if Vector2(player.position.x - self.position.x, player.position.y - self.position.y).length() < 30:
+			$Slash.play()
 			$AnimatedSprite.play("Attack")
 			$Attack.disabled = false
 		else:

@@ -26,75 +26,75 @@
 [ext_resource path="res://Sounds/witchstep4.wav" type="AudioStream" id=24]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 1 )
 region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 32, 32, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 32, 64, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
@@ -125,17 +125,17 @@ region = Rect2( 32, 64, 32, 32 )
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "Walk_Left",
+"name": "Walk_back",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "Walk_back",
+"name": "Walk_front",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "Walk_front",
+"name": "Walk_Left",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
@@ -156,7 +156,7 @@ script = ExtResource( 5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "Walk_back"
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
