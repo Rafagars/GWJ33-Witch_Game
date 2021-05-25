@@ -15,6 +15,7 @@ onready var hurt = $Hurt
 var hit = false
 # Stores the click position
 var mouse_pos = Vector2.ZERO
+var shooting = false
 
 var beam_scene = preload("res://characters/Player/beam/Beam.tscn")
 
@@ -30,7 +31,7 @@ func _input(event):
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") or shooting == true:
 		if mana > 0:
 			var beam = beam_scene.instance()
 			beam.position = self.position
@@ -38,7 +39,7 @@ func _physics_process(delta):
 			beam.dir = Vector2(mouse_pos.x - self.position.x, mouse_pos.y - self.position.y).normalized()
 			mana -= 1
 			get_parent().add_child(beam)
-			
+			shooting = false
 		
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")

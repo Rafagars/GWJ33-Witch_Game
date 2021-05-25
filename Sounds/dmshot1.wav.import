@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dmshot1.wav-b3777f5da3c364b235b9d330ebd1ac27.sample"
+
+[deps]
+
+source_file="res://Sounds/dmshot1.wav"
+dest_files=[ "res://.import/dmshot1.wav-b3777f5da3c364b235b9d330ebd1ac27.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
