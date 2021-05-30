@@ -3,9 +3,9 @@
 [ext_resource path="res://fonts/Berry Rotunda.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/scripts/MenuButton.gd" type="Script" id=2]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=5]
 size = 20
 extra_spacing_bottom = -6
 font_data = ExtResource( 1 )
@@ -13,8 +13,8 @@ font_data = ExtResource( 1 )
 [node name="MenuButton" type="Button"]
 margin_right = 12.0
 margin_bottom = 20.0
-custom_styles/focus = SubResource( 2 )
-custom_fonts/font = SubResource( 1 )
+custom_styles/focus = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.298039, 0.172549, 0.34902, 1 )
 text = "Button"
@@ -23,4 +23,5 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="." to="." method="_on_MenuButton_pressed"]

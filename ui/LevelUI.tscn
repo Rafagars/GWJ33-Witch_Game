@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/LevelUI.gd" type="Script" id=1]
 [ext_resource path="res://ui/sprites/heart.png" type="Texture" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://ui/sprites/Mana_Soul.png" type="Texture" id=5]
 [ext_resource path="res://levels/Level1/Level1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://menus/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://analog/Analog.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/sprites/Pause.png" type="Texture" id=9]
+[ext_resource path="res://ui/sprites/Pause_press.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
@@ -17,6 +20,10 @@ font_data = ExtResource( 4 )
 show_behind_parent = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.841843
+margin_top = -2.24492
+margin_right = 0.841858
+margin_bottom = -2.24493
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -80,3 +87,17 @@ __meta__ = {
 
 [node name="Level1" parent="." instance=ExtResource( 6 )]
 show_behind_parent = true
+
+[node name="Pause" type="TouchScreenButton" parent="."]
+position = Vector2( 235.71, 5.66549 )
+scale = Vector2( 0.7, 0.7 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
+action = "ui_accept"
+visibility_mode = 1
+
+[node name="Analog" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 49.6867, 215.699 )
+scale = Vector2( 0.5, 0.5 )
+AnalogTapToShowContainer = "ViewportContainer"

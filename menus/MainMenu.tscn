@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://fonts/Augusta.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://menus/templates/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://menus/bg/Backg.png" type="Texture" id=3]
 [ext_resource path="res://fonts/Berry Rotunda.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 65
-extra_spacing_space = -6
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
 size = 35
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
 font_data = ExtResource( 4 )
 
 [node name="MainMenu" type="Control"]
@@ -30,14 +30,16 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="."]
-visible = false
-anchor_right = 1.0
-margin_top = 32.0
-margin_bottom = 88.0
+margin_left = 34.7485
+margin_top = -14.1173
+margin_right = 438.748
+margin_bottom = 211.883
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Witch Game"
+text = "Royal Army invades my forest so I turn them into animals"
 align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,8 +48,10 @@ __meta__ = {
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_top = 55.0
-margin_bottom = 106.0
+margin_left = 1.12244
+margin_top = 47.1428
+margin_right = 1.12244
+margin_bottom = 127.143
 custom_constants/separation = 9
 __meta__ = {
 "_edit_use_anchors_": false
@@ -66,17 +70,14 @@ margin_bottom = 51.0
 text = "Credits"
 path = "res://menus/Credits.tscn"
 
-[node name="Title2" type="Label" parent="."]
-margin_left = 39.2383
-margin_top = -8.505
-margin_right = 443.238
-margin_bottom = 217.495
-custom_fonts/font = SubResource( 2 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Royal Army invades my forest so I turn them into animals"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Exit" type="Button" parent="Buttons"]
+visible = false
+margin_top = 60.0
+margin_right = 480.0
+margin_bottom = 87.0
+custom_styles/focus = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="Buttons/Exit" to="Buttons/Credits" method="_on_Exit_pressed"]

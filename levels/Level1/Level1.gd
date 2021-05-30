@@ -19,11 +19,8 @@ func _input(event):
 	if event is InputEventScreenTouch:
 		var local_event = make_input_local(event)
 		
-		if local_event.position.x < 70 and local_event.position.y > 190:
-			$Player.shooting = false
-		else:
-			$Player.shooting = true
-			$Player.mouse_pos = Vector2(event.position)
+		$Player.shooting = true
+		$Player.mouse_pos = Vector2(event.position)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):

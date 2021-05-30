@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://levels/Level1/Level1.gd" type="Script" id=1]
 [ext_resource path="res://characters/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://analog/Analog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://tiles/Forest_Floor.png" type="Texture" id=4]
 [ext_resource path="res://tiles/Forest_LIning.png" type="Texture" id=5]
 
@@ -66,10 +65,5 @@ polygon = PoolVector2Array( 0, 256, 0, 288, 480, 288, 480, 256 )
 [node name="Wall4" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2( 0, -256 )
 polygon = PoolVector2Array( 0, 256, 0, 288, 480, 288, 480, 256 )
-
-[node name="Analog" parent="." instance=ExtResource( 3 )]
-visible = false
-position = Vector2( 40, 216 )
-scale = Vector2( 0.5, 0.5 )
 
 [connection signal="timeout" from="WaveTimer" to="." method="_on_WaveTimer_timeout"]

@@ -17,6 +17,7 @@ var currentPointerIDX = INACTIVE_IDX;
 
 
 func _ready():
+	
 	if AnalogTapToShowContainer == "":
 		AnalogTapToShowContainer = get_parent()
 	

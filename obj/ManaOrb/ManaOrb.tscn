@@ -49,9 +49,9 @@ frames = SubResource( 5 )
 shape = SubResource( 6 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( -5, -5 )
+position = Vector2( -6, -6 )
 enabled = true
-cast_to = Vector2( 5, 5 )
+cast_to = Vector2( 7, 7 )
 
 [node name="Timer" type="Timer" parent="."]
 
