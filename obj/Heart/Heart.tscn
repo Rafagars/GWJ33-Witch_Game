@@ -39,12 +39,12 @@ frames = SubResource( 3 )
 position = Vector2( 0, -1 )
 shape = SubResource( 4 )
 
-[node name="Timer" type="Timer" parent="."]
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( -14, -11 )
 enabled = true
 cast_to = Vector2( 22, 16 )
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="Dissappear" to="." method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

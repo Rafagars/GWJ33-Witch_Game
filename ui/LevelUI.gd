@@ -13,6 +13,8 @@ onready var player : KinematicBody2D
 
 
 func _ready() -> void:
+	if OS.get_name() == "Android" or OS.get_name() == "iOS":
+		$Analog.visible = true
 	draw_hearts(4)
 
 

@@ -20,8 +20,8 @@ func _process(_delta):
 
 func _on_Timer_timeout():
 	$Sprite.visible = false
-	$AnimatedSprite.visible = true
-	$AnimatedSprite.play()
+	$Dissappear.visible = true
+	$Dissappear.play()
 
 
 func _on_AnimatedSprite_animation_finished():
